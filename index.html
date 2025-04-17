@@ -34,6 +34,13 @@
       animation: fadeIn 3s ease-in-out;
     }
 
+    .love {
+      font-size: 2em;
+      color: #fff0f5;
+      margin-top: 20px;
+      animation: glow 2s infinite ease-in-out;
+    }
+
     .heart {
       position: absolute;
       font-size: 20px;
@@ -61,33 +68,62 @@
       }
     }
 
-    .love {
-      font-size: 2em;
-      color: #fff0f5;
-      margin-top: 20px;
-      animation: glow 2s infinite ease-in-out;
-    }
-
     @keyframes glow {
       0%, 100% { text-shadow: 0 0 10px pink; }
       50% { text-shadow: 0 0 20px red; }
     }
 
-    audio {
-      display: none;
+    /* 💖 Love background animation */
+    .floating-love {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .love-icon {
+      position: absolute;
+      color: #ffccd5;
+      font-size: 24px;
+      opacity: 0.6;
+      animation: floatAround 10s linear infinite;
+    }
+
+    @keyframes floatAround {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(20vw) scale(1.2);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>💖 Happy Birthday, My Dearest Srijana 💖</h1>
+  <!-- 💕 Floating background hearts -->
+  <div class="floating-love" id="floatingLove"></div>
+
+  <h1>💖 Happy Birthday, Mero Maicha 💖</h1>
   <p>
-    On this magical day, the world became brighter — because you were born. <br>
-    You light up my life like the stars in the sky. I’m endlessly thankful for your smile, your heart, and your love. <br>
-    May your birthday be as wonderful and beautiful as you are. I love you more with every heartbeat. 💕
+    Today is a special day, not just for you — but for me too. <br>
+    Because on this day, the most beautiful soul came into this world. <br><br>
+    Timro cute and beautiful smile lights my darkest days, and your love makes life magical. <br>
+    I'm so thankful for every moment we’ve shared — every late night text, every second spent with you, and every memory we've created. <br><br>
+    May your birthday be as wonderful and beautiful as you are. <br>
+    I love you more with every heartbeat. 💕
   </p>
   <div class="love">Forever Yours ❤️</div>
 
-  <!-- Floating hearts -->
+  <!-- ❤️ Floating hearts (foreground) -->
   <script>
     function createHeart() {
       const heart = document.createElement('div');
@@ -95,17 +131,30 @@
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+      setTimeout(() => heart.remove(), 5000);
     }
-
     setInterval(createHeart, 300);
   </script>
 
-  <!-- Optional: Add background music (romantic & soft) -->
-  <!-- Make sure you replace 'your-music.mp3' with a valid mp3 file hosted online -->
+  <!-- 💘 Floating love background -->
+  <script>
+    const floatingLove = document.getElementById("floatingLove");
+    function spawnLoveIcon() {
+      const icon = document.createElement('div');
+      icon.classList.add('love-icon');
+      icon.style.left = Math.random() * 100 + 'vw';
+      icon.style.top = Math.random() * 100 + 'vh';
+      icon.style.fontSize = Math.random() * 20 + 15 + 'px';
+      icon.innerText = '💕';
+      floatingLove.appendChild(icon);
+
+      setTimeout(() => icon.remove(), 10000);
+    }
+
+    setInterval(spawnLoveIcon, 400);
+  </script>
+
+  <!-- Optional: Background music -->
   <!--
   <audio autoplay loop>
     <source src="your-music.mp3" type="audio/mpeg">
