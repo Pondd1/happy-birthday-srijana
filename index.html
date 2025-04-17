@@ -12,8 +12,8 @@
       font-family: 'Segoe UI', cursive;
       color: #fff;
       text-align: center;
-      overflow: hidden;
       position: relative;
+      min-height: 100vh;
     }
 
     h1 {
@@ -37,7 +37,7 @@
     .love {
       font-size: 2em;
       color: #fff0f5;
-      margin-top: 20px;
+      margin: 40px 0 100px;
       animation: glow 2s infinite ease-in-out;
     }
 
@@ -47,6 +47,7 @@
       color: red;
       animation: float 5s infinite ease-in;
       opacity: 0.8;
+      z-index: 2;
     }
 
     @keyframes fadeIn {
@@ -147,7 +148,6 @@
       icon.style.fontSize = Math.random() * 20 + 15 + 'px';
       icon.innerText = '💕';
       floatingLove.appendChild(icon);
-
       setTimeout(() => icon.remove(), 10000);
     }
 
